@@ -1,25 +1,27 @@
 # \<Projet CCM\>
 
-Meteo station
+Meteo station by Paul-Olivier Haye
 
 ## Calendar
 
+  
+### For 25/03/2019
+
+  - Communication between the arduino and the sensors.
+  - Weather api working on front.
 
 
-## Install the Polymer-CLI
+### For 23/04/2019
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) and npm (packaged with [Node.js](https://nodejs.org)) installed. Run `npm install` to install your element's dependencies, then run `polymer serve` to serve your element locally.
+  - LoRa send the sensors data to Orange's Live Object api.
+  - Front end display Live Object's data.
 
-## Viewing Your Element
 
-```
-$ polymer serve
-```
+### For 23/05/2019
 
-## Running Tests
+  - The Google Cloud VM is getting Live Object api's data and process it before sending informations to the front.
 
-```
-$ polymer test
-```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+### For 21/06/2019
+
+  - Everything is working together.
