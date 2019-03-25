@@ -2,14 +2,110 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0;url=demo/" />
-    <title>Project CCM</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Ville de Saint-Quentin - Stade</title>
+
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    
+    <script type="module">
+        import '@polymer/paper-toolbar/paper-toolbar.js';
+        import '@vaadin/vaadin-grid/vaadin-grid.js';
+    </script>
+    <script type="module" src="src/weather.js"></script>
+    <script type="module" src="src/sensors.js"></script>
+    <script type="module" src="src/map.js"></script>
+
   </head>
+  <style>
+    body {
+      margin: 0;
+      background-color: lightgrey;
+    }
+
+    .flex-div {
+      margin-top:10px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    sensor-card {
+      flex-grow: 1;
+      margin-left:10px;
+      max-width: 40%;
+    }
+    
+    map-card {
+      flex-grow: 1;
+      margin-left:10px;
+      margin-right:10px;
+      max-width: 31%;
+    }
+    
+    weather-card {
+      margin-right:10px;
+      flex-grow: 1;
+      max-width: 29%;
+    }
+
+    paper-toolbar {
+      background: rgb(39, 194, 39);
+    }
+
+    
+    .logo-div {
+      height: 100%;
+      text-align: end;
+    }
+
+    .logo-div img {
+      height: 100%;
+    }
+
+    .title {
+      font-size: 2em;
+      text-align: center;
+    }
+    
+    @media (max-width: 1024px) {
+      .flex-div {
+        flex-direction: column;
+      }
+        
+      sensor-card {
+        margin-left:5px;
+        margin-right:5px;
+        max-width: 100%;
+      }
+      
+      map-card {
+        margin-left:5px;
+        margin-right:5px;
+        margin-top:5px;
+        max-width: 100%;
+      }
+      
+      weather-card {
+        margin-left:5px;
+        margin-right:5px;
+        margin-top:5px;
+        margin-top:5px;
+        max-width: 100%;
+      }
+    }
+  </style>
   <body>
-    <!--
-        Visit demo/index.html to see live examples of your element running.
-        This page will automatically redirect you there when run in the browser
-        with `polymer serve`.
-      -->
+      <paper-toolbar>
+        <div slot="top" class="title">Ville de Saint-Quentin</div>
+        <!-- <div slot="bottom" class="logo-div">
+          <img src="../img/logo_elementio.png"/>
+        </div> -->
+      </paper-toolbar>
+      <div class="flex-div">
+        <sensor-card></sensor-card>
+        <map-card></map-card>
+        <weather-card></weather-card>
+      </div>
   </body>
 </html>
