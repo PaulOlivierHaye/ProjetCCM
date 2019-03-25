@@ -4,5 +4,8 @@
     "rules": [
       "polymer-3"
     ]
+  },
+  "build": {
+    "preset": "es6-bundled"
   }
 }

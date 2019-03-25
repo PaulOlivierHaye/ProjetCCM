@@ -3,7 +3,13 @@
   "description": "Meteo station",
   "main": "project-station.js",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/app-layout": "^3.0.2",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-card": "^3.0.1",
+    "@polymer/paper-toolbar": "^3.0.1",
+    "@polymer/polymer": "^3.0.0",
+    "@vaadin/vaadin-grid": "^5.3.3"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
