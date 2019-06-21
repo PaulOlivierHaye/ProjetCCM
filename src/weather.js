@@ -22,6 +22,7 @@ class WeatherCard extends PolymerElement {
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Amiens&APPID=f341f2a56cba93cb2ee5abecb3ce5448",
       (json) => {
         this._weatherJson = json;
+        
         document.querySelector('weather-card').shadowRoot.querySelector('div.temp').innerHTML
           = "Température : " + (json.main.temp - 273.15).toFixed(1) + "°C";
         
@@ -52,8 +53,8 @@ class WeatherCard extends PolymerElement {
       }
 
       iron-icon {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
       }
       paper-button {
         background: lime;
@@ -69,10 +70,10 @@ class WeatherCard extends PolymerElement {
       <div class="card-content">
         <!-- <div>[[_weatherJson.name]]</div> -->
         <div>Saint-Quentin</div>
-        <span>[[_weatherJson.weather.0.main]]</span>
+        <!-- <span>[[_weatherJson.weather.0.main]]</span> -->
         <iron-icon id="icon"></iron-icon>
         <div class="temp"></div>
-        <div>Précipitations : [[_weatherJson.rain]] mm</div>
+        <!-- <div>Précipitations : [[_weatherJson.rain]] mm</div> -->
         <div>Humidité : [[_weatherJson.main.humidity]]%</div>
         <div>Vent : [[_weatherJson.wind.speed]] km/h</div>
       </div>

@@ -28,7 +28,7 @@ class MapCard extends PolymerElement {
       }
 
       .map {
-        height: 80%;
+        width: 95%;
       }
 
       .map-state {
@@ -54,10 +54,16 @@ class MapCard extends PolymerElement {
       paper-button:hover {
         background: lightgreen;
       }
+
+      @media (max-width: 1024px) {
+        .map {
+          width: 100%;
+        }
+      }
     </style>
     <paper-card class="map-card" heading="Stade Philippe Roth">
       <div class="card-content">
-        <img class="map" src="../img/roth.jpg"/>
+        <img class="map" src="../img/roth2.png"/>
       </div>
       <div class="map-state">
         <div>

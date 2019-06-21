@@ -34,13 +34,38 @@ class SensorCard extends PolymerElement {
 
       .buttons paper-button{
         flex-grow:1;
+        width: 33%;
+      }
+
+      .refresh {
+        font-size: 14px;
+        padding: 10px;
+        margin-top: 10px;
+      }
+
+      .green {
+        color: green;
+      }
+
+      .red {
+        color: red;
+      }
+
+      .yellow {
+        color: yellow;
+      }
+
+      .orange {
+        color: orange;
       }
 
       paper-button {
         padding: 0px;
+        padding-left: 5px;
         margin-bottom: 5px;
         background: lightgreen;
         color: green;
+        text-align: center;
       }
 
       paper-button:not([disabled]) {
@@ -55,20 +80,34 @@ class SensorCard extends PolymerElement {
         font-size: 13px;
       }
     </style>
-    <paper-card class="sensors-card" heading="Capteurs">
+    <paper-card class="sensors-card" heading="Capteurs" onload="[[_getEntities()]]">
       <div class="card-content">
         <vaadin-grid>
           <vaadin-grid-column path="number" header="Numéro"></vaadin-grid-column>
-          <vaadin-grid-column path="hygro" header="Hygrométrie"></vaadin-grid-column>
-          <vaadin-grid-column path="temp" header="Température"></vaadin-grid-column>
-          <vaadin-grid-column path="battery" header="Batterie"></vaadin-grid-column>
+          <vaadin-grid-column path="hygro" header="Hygrométrie">
+            <template>
+              <div>
+                [[item.hygro]]
+              </div>
+            </template>
+          </vaadin-grid-column>
+          <vaadin-grid-column path="temp" header="Température">
+            <template>
+              <div>
+                [[item.temp]] °C
+              </div>
+            </template>
+          </vaadin-grid-column>
+          <vaadin-grid-column path="battery" header="Batterie">
+            <template>
+              <div class$="[[_computeBatteryClass(item.battery)]]">
+                [[item.battery]] %
+              </div>
+            </template>
+          </vaadin-grid-column>
         </vaadin-grid>
+        <paper-button class="refresh" on-tap="[[_getEntities()]]">Rafraichir</paper-button>
       </div>
-      <!-- <div class="buttons">
-        <paper-button class="arroser">Arroser</paper-button>
-        <paper-button disabled class="notarroser">Arreter</paper-button>
-        <paper-button class="bouton3">Auto</paper-button>
-      </div> -->
     </paper-card>
     `;
   }
@@ -82,51 +121,79 @@ class SensorCard extends PolymerElement {
         "number": 1,
         "hygro": 'OK',
         "temp": 16,
-        "battery": '36%'
+        "battery": 36
       },
       {
         "number": 2,
         "hygro": 'OK',
         "temp": 16,
-        "battery": '82%'
+        "battery": 82
       },
       {
         "number": 3,
         "hygro": 'Forte',
         "temp": 17,
-        "battery": '6%'
+        "battery": 6
       },
       {
         "number": 4,
         "hygro": 'OK',
         "temp": 16,
-        "battery": '58%'
+        "battery": 58
       },
       {
         "number": 5,
         "hygro": 'Basse',
         "temp": 16,
-        "battery": '75%'
+        "battery": 75
       },
       {
         "number": 6,
         "hygro": 'Basse',
         "temp": 17,
-        "battery": '49%'
+        "battery": 49
       },
       {
         "number": 7,
         "hygro": 'Basse',
         "temp": 17,
-        "battery": '85%'
+        "battery": 85
       },
       {
         "number": 8,
         "hygro": 'Basse',
         "temp": 19,
-        "battery": '8%'
+        "battery": 8
       }
     ];
+  }
+
+  _getEntities() {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append("username", "elementiosas@gmail.com");
+    myHeaders.append("password", "ElementIo@02");
+    myHeaders.append("fiware-servicepath", "/lmiot/");
+    
+    var myInit = {  method: 'GET',
+                    headers: myHeaders,
+                    mode: 'no-cors'};
+
+    
+    fetch('http://35.204.53.51/v2/entities', myInit)
+    .then(function(response) {
+      console.log(response);
+      
+      return response;
+    })
+  }
+
+  _computeBatteryClass(battery) {
+    if(battery >= 75) return 'green'
+    if(battery >= 50) return 'yellow'
+    if(battery >= 25) return 'orange'
+    return 'red';
   }
 
 }

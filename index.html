@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>Ville de Saint-Quentin - Stade</title>
+    <title>Station Météo - Projet CCM</title>
 
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     
@@ -14,7 +14,6 @@
     </script>
     <script type="module" src="src/weather.js"></script>
     <script type="module" src="src/sensors.js"></script>
-    <script type="module" src="src/map.js"></script>
 
   </head>
   <style>
@@ -30,37 +29,48 @@
       flex-direction: row;
       justify-content: center;
     }
+
     sensor-card {
       flex-grow: 1;
       margin-left:10px;
-      max-width: 40%;
+      margin-right:10px;
+      max-width: 100%;
     }
     
     map-card {
       flex-grow: 1;
       margin-left:10px;
       margin-right:10px;
-      max-width: 31%;
+      max-width: 66%;
     }
     
     weather-card {
       margin-right:10px;
       flex-grow: 1;
-      max-width: 29%;
+      max-width: 34%;
     }
 
     paper-toolbar {
       background: rgb(39, 194, 39);
     }
 
+    .footer {
+      height: 10px;
+      width: 100%;
+    }
     
     .logo-div {
       height: 100%;
-      text-align: end;
+      text-align: left;
     }
 
-    .logo-div img {
+    .logo-div img, .logo-ville-div img {
       height: 100%;
+    }
+
+    .logo-ville-div {
+      height: 100% ;
+      text-align: right;
     }
 
     .title {
@@ -71,6 +81,20 @@
     @media (max-width: 1024px) {
       .flex-div {
         flex-direction: column;
+      }
+      
+      .logo-div {
+        height: 80%;
+        text-align: left;
+      }
+
+      .logo-ville-div {
+        height: 80% ;
+        text-align: right;
+      }
+      
+      .title {
+        font-size: 0px;
       }
         
       sensor-card {
@@ -97,15 +121,13 @@
   </style>
   <body>
       <paper-toolbar>
-        <div slot="top" class="title">Ville de Saint-Quentin</div>
-        <!-- <div slot="bottom" class="logo-div">
-          <img src="../img/logo_elementio.png"/>
-        </div> -->
+        <div slot="top" class="title">Station météo</div>
       </paper-toolbar>
       <div class="flex-div">
-        <sensor-card></sensor-card>
-        <map-card></map-card>
         <weather-card></weather-card>
+        <sensor-card></sensor-card>
       </div>
+      <div class="footer"></div>
   </body>
-</html>
+</html> 
+<!-- gkey: AIzaSyC3myTt38Jqw_pJlEmqS-tcMXGj7x51EC8 -->
